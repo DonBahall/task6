@@ -1,7 +1,8 @@
 import './App.css'
 import React from "react";
 import Button from '@material-ui/core/Button';
-import {List, ListItem, ListItemText, TextField} from "@material-ui/core";
+import {ListItem, ListItemText, TextField} from "@material-ui/core";
+import {ListItemButton} from "@mui/material";
 
 const history = [];
 
@@ -81,14 +82,13 @@ function App() {
 
             <div className={"history"}>
                 <Button onClick={(e) => sendToBack()}>Get and solve</Button>
-                <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                    {history.map((value) => (
-                <ListItem
-                    key={value}
-                    disableGutters
-                    > <ListItemText primary={`${value}`} /></ListItem>
-                    ))}
-                </List>
+                <TextField
+                    id="outlined-multiline-static"
+                    label=""
+                    multiline
+                    variant="outlined"
+                    value={history}
+                />
             </div>
         </div>
 
