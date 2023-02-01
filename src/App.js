@@ -1,13 +1,13 @@
 import './App.css'
 import React from "react";
 import Button from '@material-ui/core/Button';
-import { TextField} from "@material-ui/core";
+import {List, ListItem, ListItemText, TextField} from "@material-ui/core";
 
 
 const history = [];
 
 function App() {
-
+    let i = 0;
     const [input, setInput] = React.useState("");
     const nums = Array();
     [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, "."].forEach((item) => {
@@ -82,20 +82,27 @@ function App() {
 
             <div className={"history"}>
                 <Button onClick={(e) => sendToBack()}>Get and solve</Button>
-                <TextField
-                    id="outlined-multiline-static"
-                    label=""
-                    multiline
-                    variant="outlined"
-                    value={history}
-                />
+
+                <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                    { history.map((value) => (
+
+                    <ListItem
+                        key={value}
+                        disableGutters
+                    >
+                        <ListItemText primary={`${value}`} />
+
+                    </ListItem>
+
+                    ))}
+                </List>
+
             </div>
         </div>
 
     );
 
 }
-
 async function sendToBack() {
     return await fetch('http://localhost:8080/math/examples?count=5', {
         method: 'GET',

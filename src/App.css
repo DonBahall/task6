@@ -36,12 +36,12 @@
 
 .subgrid {
     border: none;
-    background-color: red;
+    background-color: white;
 }
 
 .history {
     border: none;
-    background-color: forestgreen;
+    background-color: palegreen;
 }
 
 button:hover {
